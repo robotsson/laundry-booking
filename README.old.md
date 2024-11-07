@@ -1,4 +1,4 @@
-# Laundry booking app (Groupo project)
+# Laundry Booking App (Group Project)
 
 **What to do:**
 - You are going to decide in your group
@@ -24,11 +24,3 @@
 	- Tips & Tricks
 	- Useful Resources & Tools & Apps etc
 	- Project Demo o Code Part
-
-### Structure
-    - Choose day
-    	- 2 laundry room (in columns)
-        	- 4 time slots (per room)
-                	- authentication (lgh + pin-code)
-                        - booking confirmation
-                        
