@@ -5,13 +5,13 @@
 - Develop a FrontEnd Web Site 
 
 ### For Group Project - You need to 
-- Decide what to do 
-- Create your plan 
-- Create your UML Diagrams 
-- Start a project 
-- Divide it by part and who is responsible which part 
-- Daily Scrum Meetings 
-- Preparing to Topics and discussing topics
+- [ ] Decide what to do 
+- [ ] Create your plan 
+- [ ] Create your UML Diagrams 
+- [ ] Start a project 
+- [ ] Divide it by part and who is responsible which part 
+- [ ] Daily Scrum Meetings 
+- [ ] Preparing to Topics and discussing topics
 
 - ***On 2024.11.15*** you are going to present your group project: 
 	- What you did? 
