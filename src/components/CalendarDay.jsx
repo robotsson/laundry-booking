@@ -7,8 +7,7 @@ export default function CalendarDay( {date} ) {
     {
         console.log("clickHandler: "+date);
     }
-    
-    // console.log(`uid: ${uid}`);
+
     // console.log(`date: ${date}`);
     
     return (

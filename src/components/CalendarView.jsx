@@ -1,17 +1,12 @@
 import './CalendarView.css';
 import CalendarWeek from './CalendarWeek';
 
+const dayjs = require('dayjs');
 
 
 function _getDate() { 
-  const months = [ "January", "February", "March", "April", "May", "June",
-                       "July", "August", "September", "October", "November", "December" ];
-  const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];
-                       
-  let _date = new Date( Date.now() );
-  return ( days[_date.getDay()]+" "+_date.getDate()+" "+
-           months[_date.getMonth()]+" "+_date.getFullYear()+" "+
-           _date.getHours()+":"+_date.getMonth()+":"+_date.getSeconds());
+  let _now = dayjs();
+  return _now.format('dddd DD MMMM YYYY H:mm:ss');
 }
 
 export default function CalendarView() {  
