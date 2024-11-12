@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>      
       <Routes>
         {/* Uncoment the rout corresponding to your part of the project. */}        
-        {/* <Route path="/" element={<CalendarView />} /> */}
+        <Route path="/" element={<CalendarView />} /> 
         {/* <Route path="/" element={<DayView/>} /> */}
         {/* <Route path="/" element={<LogIn/>} /> */}
       </Routes>
