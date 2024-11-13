@@ -15,10 +15,14 @@ function DayView () { /*state variables*/
     'Laundry Room 1': ['08-12', '12-16', '16-19', '19-22'],
     'Laundry Room 2': ['08-12', '12-16', '16-19', '19-22'],
   });
-      /* Function to handle date selection*/
-  const handleDateClick = (date) => {
-    setSelectedDate(date);
-  };
+  
+  /* Function to handle date selection*/
+  // const handleDateClick = (date) => {
+  //   setSelectedDate(date);
+  // };
+  const date = useParams().date;
+  setSelectedDate(date);
+
             /* Function to handle Bookingn*/
  
   const handleBook = (room, time) => {
