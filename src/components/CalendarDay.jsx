@@ -9,13 +9,16 @@ export default function CalendarDay( {data,index} ) {
     }
 
     // console.log(`date: ${date}`);
-    const className = "day item"+index;
+    const disabled = "not-disabled"; // check if date has passed
+    
     const url = `/day/${data['date']}`;   // DayView gets this in useParams().id
 
     return (
-        <Link to={url}>
-          <div className={className} onClick={dayClickHandler}>{data['date']}</div>
-        </Link>
+        <div className={disabled}>
+          <Link to={url}>
+            <div className="day" onClick={dayClickHandler}>{data['date']}</div>
+          </Link>
+        </div>
     );
 }
 
