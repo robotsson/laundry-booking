@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-function DayView({bookings}) {
-
 function DayView () { /*state variables*/
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -21,8 +19,7 @@ function DayView () { /*state variables*/
   const date = useParams().date;
   setSelectedDate(date);
 
-            /* Function to handle Bookingn*/
- 
+  /* Function to handle Bookingn*/ 
   const handleBook = (room, time) => {
     if (!isLoggedIn) {                 /*if not logged in, show the login prompt*/
       // Show login prompt
