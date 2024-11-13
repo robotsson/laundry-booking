@@ -48,9 +48,9 @@ ol {
     display: flex;
     flex-wrap: nowrap;
     /* background-color: lightblue; */
-    gap: 5px;
+    gap: 10px;
     width: max-content;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 

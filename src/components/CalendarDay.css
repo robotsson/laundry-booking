@@ -1,12 +1,13 @@
 .day {
-    background-color: #f1f1f1;
+    background-color: white; 
+    /* #f1f1f1; */
     width: 100px;
     padding-top: 5px;
     text-align: center;
     height: 100px;
     font-size: 16px;
     transition-duration: 0.2s;
-    box-shadow: 2px 2px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .day:hover {

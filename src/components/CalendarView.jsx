@@ -17,11 +17,12 @@ export default function CalendarView({bookings}) {
                   ["Dec 2","Dec 3","Dec 4","Dec 5","Dec 6","Dec 7","Dec 8"] ];
 
                 
-  // console.log("CalendarView");
-  // console.log(JSON.stringify(bookings));
+//   // console.log("CalendarView");
+//  console.log(JSON.stringify(bookings));
+
 
   return (
-    <div className="Calendar">
+    <div className="calendar">
       <h1>{_getDate()}</h1>
       <div className="weeks">
         <CalendarWeek dates={dates[0]}/>
