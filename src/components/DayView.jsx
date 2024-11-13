@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 
 function DayView({bookings}) {
 
-  const date = useParams().date;
-
 function DayView () { /*state variables*/
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
