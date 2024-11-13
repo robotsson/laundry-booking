@@ -1,17 +1,21 @@
 import './CalendarDay.css';
+import { Link } from "react-router-dom";
 
-
-export default function CalendarDay( {date} ) {
+export default function CalendarDay( {data,index} ) {
     
     function dayClickHandler()
     {
-        console.log("clickHandler: "+date);
+        console.log("clickHandler: "+data['date']);
     }
 
     // console.log(`date: ${date}`);
-    
+    const className = "day item"+index;
+    const url = `/day/${data['date']}`;   // DayView gets this in useParams().id
+
     return (
-        <div className="day" onClick={dayClickHandler}>{date}</div>
+        <Link to={url}>
+          <div className={className} onClick={dayClickHandler}>{data['date']}</div>
+        </Link>
     );
 }
 

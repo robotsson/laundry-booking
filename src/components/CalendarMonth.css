@@ -44,13 +44,16 @@ ol {
 }
   
 
-.week {
-    display: flex;
-    flex-wrap: nowrap;
+.month {
+    display: grid;
     /* background-color: lightblue; */
-    gap: 10px;
-    width: max-content;
-    margin-bottom: 10px;
+
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);    
+    gap: 1vw;
+    width: 96vw;
+    margin-bottom: 1vw;
+    height: 54.86vw;    
 }
 
 
