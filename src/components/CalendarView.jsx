@@ -11,8 +11,6 @@ function _getDate() {
 
 export default function CalendarView({bookings}) {  
 
-
-
   // const datesflat = dates.flat();
 
   console.log("CalendarView " + bookings?.length);

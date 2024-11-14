@@ -1,6 +1,8 @@
 import './CalendarMonth.css';
 import CalendarDay from './CalendarDay';
 
+const dayjs = require('dayjs');
+
 export default function CalendarMonth({bookings}) {
 
     // unique key property required by react for list items
