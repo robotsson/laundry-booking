@@ -4,7 +4,7 @@ import './DayView.css';
 
 function DayView () { /*state variables*/
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(useParams().date);
   const [showLogin, setShowLogin] = useState(false);
   const [apartmentNumber, setApartmentNumber] = useState();
   const [availableSlots, setAvailableSlots] = useState({
@@ -17,7 +17,7 @@ function DayView () { /*state variables*/
   //   setSelectedDate(date);
   // };
 
-  const date = useParams().date;
+  // const date = useParams().date;
   // Setting this triggers "Too many re-renders" error
   // setSelectedDate(date);
 
@@ -45,13 +45,13 @@ function DayView () { /*state variables*/
  
   return (
     <div>
-      <h2>{date}</h2>
+      <h2>{selectedDate}</h2>
       <div className="day">
         
         {/* Map to display each luandry room*/}
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
-            <h3>{room} hej</h3>   {/*Display the room name*/}
+            <h3>{room}</h3>   {/*Display the room name*/}
             <div>
               {/*Map for time slots for each room*/}
               {availableSlots[room].map((slot) => (
