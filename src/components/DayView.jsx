@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
 import { useParams } from 'react-router-dom';
+import './DayView.css';
 
 function DayView () { /*state variables*/
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,8 +16,10 @@ function DayView () { /*state variables*/
   // const handleDateClick = (date) => {
   //   setSelectedDate(date);
   // };
+
   const date = useParams().date;
-  setSelectedDate(date);
+  // Setting this triggers "Too many re-renders" error
+  // setSelectedDate(date);
 
   /* Function to handle Bookingn*/ 
   const handleBook = (room, time) => {
@@ -43,45 +45,47 @@ function DayView () { /*state variables*/
  
   return (
     <div>
+      <h2>{date}</h2>
       <div className="day">
-                  {/* Map to display each luandry room*/}  
-                {Object.keys(availableSlots).map((room) => (
-                    <div className="room" key={room}>
-                        <h3>{room}</h3>   {/*Display the room name*/}
-                        <div>
-                             {/*Map for time slots for each room*/}
-                            {availableSlots[room].map((slot) => (    
-                                <div key={slot}>
-                                    {slot}    {/*Display the time slot*/}
-                                     <button onClick={() => handleBook(room, slot)}>Book</button>  {/* Booking button*/}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+        
+        {/* Map to display each luandry room*/}
+        {Object.keys(availableSlots).map((room) => (
+          <div className="room" key={room}>
+            <h3>{room} hej</h3>   {/*Display the room name*/}
+            <div>
+              {/*Map for time slots for each room*/}
+              {availableSlots[room].map((slot) => (
+                <div key={slot}>
+                  {slot}    {/*Display the time slot*/}
+                  <button onClick={() => handleBook(room, slot)}>Book</button>  {/* Booking button*/}
+                </div>
+              ))}
             </div>
-            {/*Login prompt*/}
-            {showLogin && (
-                <div className="login">
-                    <h3>Login</h3>
-                    <input
-                        type="text"      
-                        placeholder="Enter Apartment Number"
-                        value={apartmentNumber}
-                        onChange={(e) =>        
-                        setApartmentNumber(e.target.value)}   // Update apartment number
- 
-                    />  
-                    <button onClick={handleLogin}>Login to confirm booking</button>  {/*Login button*/}
-                </div>
-            )}
-              {/*Display apartment number if logged in*/}
-            {isLoggedIn && (
-                <div className="apartment-number">
-                    <h3>Your Apartment Number: <button onClick={handleCancelBooking}>{apartmentNumber}</button></h3>
-                </div>
-            )}
+          </div>
+        ))}
+      </div>
+      {/*Login prompt*/}
+      {showLogin && (
+        <div className="login">
+          <h3>Login</h3>
+          <input
+            type="text"
+            placeholder="Enter Apartment Number"
+            value={apartmentNumber}
+            onChange={(e) =>
+              setApartmentNumber(e.target.value)}   // Update apartment number
+
+          />
+          <button onClick={handleLogin}>Login to confirm booking</button>  {/*Login button*/}
         </div>
+      )}
+      {/*Display apartment number if logged in*/}
+      {isLoggedIn && (
+        <div className="apartment-number">
+          <h3>Your Apartment Number: <button onClick={handleCancelBooking}>{apartmentNumber}</button></h3>
+        </div>
+      )}
+    </div>
     );
 };
  

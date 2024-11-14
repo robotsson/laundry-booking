@@ -14,9 +14,9 @@ export default function CalendarDay( {data,index} ) {
     const url = `/day/${data['date']}`;   // DayView gets this in useParams().id
 
     return (
-        <div className={disabled}>
+        <div className="hej">
           <Link to={url}>
-            <div className="day" onClick={dayClickHandler}>{data['date']}</div>
+            <div className="calendar-day" onClick={dayClickHandler}>{data['date']}</div>
           </Link>
         </div>
     );

@@ -33,7 +33,7 @@ export default function CalendarView({bookings}) {
   return (
     <div className="calendar">
       <h1>{_getDate()}</h1>
-      <div className="weeks">
+      <div>
         <CalendarMonth bookings={bookings} />
       </div>
     </div>

@@ -1,4 +1,4 @@
-.day {
+.calendar-day {
     background-color: white; 
     /* #f1f1f1; */
    /* width: 13vw; */
@@ -11,17 +11,19 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.day-disabled {
+/* .calendar-day-disabled {
     pointer-events: none;    
     background-color:rgb(230, 230, 230);
-}
+} */
 
-.day:hover {
+
+
+.calendar-day:hover {
     filter: contrast(200%);
     /* transform: translateY(-6px);   */
 
     transform: scale(200%);
-}   
+}    
 
 a:link { color: black; text-decoration: none;}
 a:visited { color: black; }

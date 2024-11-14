@@ -26,7 +26,7 @@ export default function CalendarMonth({bookings}) {
     );
 
     return (
-        <div className="month">
+        <div className="calendar-month">
             {days}
         </div>
     );
