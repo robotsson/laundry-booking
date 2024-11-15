@@ -111,7 +111,7 @@ function DayView() {
     };
 
     fetchAvailableSlots();
-  }, [selectedDate]); // Re-run whenever timeBlock or date changes
+  }, [ selectedDate ]); // Re-run whenever timeBlock or date changes
    
   if (loading) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>; 
@@ -124,7 +124,7 @@ function DayView() {
       <div className="day"> 
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
-            <h3>{room}</h3>
+            <h3>Laundry Room { room === "room1" ? 1 : 2 }</h3>
             <div>
               {/* Sort the slots array by time_block before rendering */}
               {availableSlots[room]

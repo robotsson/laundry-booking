@@ -38,7 +38,6 @@ h6 {
   font-size: 12px;
 }
 
-
 ol {
   list-style-type: none;
 }
@@ -49,7 +48,7 @@ ol {
     margin-left: 2vw;
     margin-right: 2vw;
     width: auto;
-    text-align: right;
+    text-align: left;
 }
 
 .calendar-month {
