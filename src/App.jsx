@@ -7,7 +7,6 @@ import LogIn from './components/LogIn';
 import { useState } from 'react';
 
 function App() {
-  const [data ] = useState(bookings);
 
   return (
     <BookingProvider>
