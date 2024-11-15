@@ -22,11 +22,6 @@ export default function CalendarView({bookings}) {
     const date = startDate.add( index, 'day' ).format('YYYY-MM-DD');
     days.push( <CalendarDay key={index} date={date}/> );
   }
-  //console.log(dates);
-
-  // const days = bookings.map(
-  //   (item, index) => <CalendarDay key={index} index={index} data={item}/>  
-  // );
 
   return (
     <div className="calendar">

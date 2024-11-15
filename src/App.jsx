@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import DayView from './components/DayView';
 import LogIn from './components/LogIn';
-import { useState } from 'react';
 
 function App() {
 
