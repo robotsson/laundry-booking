@@ -8,12 +8,6 @@ const _getDate = () => {
 
 export default function CalendarView({bookings}) {  
   
-  // console.log(`CalendarView bookings.length: ${bookings?.length}`);
-  // if( bookings === null )
-  // {
-  //     console.log("CalenderView bookings was null");
-  // }  
-  // console.log(JSON.stringify(bookings));
   const days = bookings.map(
     (item, index) => <CalendarDay key={index} index={index} data={item}/>  
   );
@@ -23,7 +17,7 @@ export default function CalendarView({bookings}) {
       <h1>{_getDate()}</h1>
       <div>
         <div className="calendar-month">
-            {days}
+          {days}
         </div>
       </div>
     </div>
