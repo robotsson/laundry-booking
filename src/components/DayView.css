@@ -16,7 +16,8 @@ h3 {
 /* Day View Styles */
 .day {
     display: flex;
-    justify-content:space-around; /* Space out the laundry rooms */
+    gap: 10px;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
