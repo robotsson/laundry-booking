@@ -13,9 +13,6 @@ function DayView() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Just in case you want to run DayView without CalendarView
-  if(!selectedDate) setSelectedDate('2024-11-10');
-
   const handleTimeBlockClick = (e, room, timeBlock) => {     
     const buttonClass = e.target.className; // Get the className of the button
 
@@ -61,7 +58,7 @@ function DayView() {
 
   useEffect(() => {    
     const fetchAvailableSlots = async () => {
-      if (!selectedDate) return;
+      if (!selectedDate) setSelectedDate('2024-11-10');
       
       try {
         // Fetch room schedule data with relationships to Dates and Rooms tables

@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BookingProvider>
-      <Router>
+      <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
         <Routes> 
           {/* change this to have a different start page */}
           <Route path="/" element={<DayView />} />
