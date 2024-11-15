@@ -4,8 +4,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    margin: 100px;
-    padding: 20px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
 }
 
 h3 {
@@ -15,7 +16,8 @@ h3 {
 /* Day View Styles */
 .day {
     display: flex;
-    justify-content:space-around; /* Space out the laundry rooms */
+    gap: 10px;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -45,6 +47,10 @@ button {
     transition: background-color 0.3s;
 }
 
+button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
 /* Login Styles */
 .login {
     margin-top: 20px;
@@ -67,21 +73,3 @@ button {
     padding: 10px;
     z-index: 1000;
   }
-
-.booked {
-background-color: red;
-color: white;
-}
-
-.booked:hover {
-    background-color: #ff6666;
-}
-
-.available {
-background-color: green;
-color: white;
-}
-
-.available:hover {
-    background-color: #66cc66;
-}
