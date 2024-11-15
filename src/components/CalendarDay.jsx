@@ -6,14 +6,13 @@ import dayjs from 'dayjs';
 
 export default function CalendarDay( {data} ) {
  
-    const { selectedDate, setSelectedDate } = useBooking();    
+    const { setSelectedDate } = useBooking();    
     const currentDate = data['date'];
 
     function dayClickHandler()
     {
-        console.log("clickHandler: "+currentDate+" "+selectedDate);
-        setSelectedDate(currentDate); 
-            
+        // console.log("clickHandler: "+currentDate+" "+selectedDate);
+        setSelectedDate(currentDate);         
     }
     
     let className="calendar-day";
