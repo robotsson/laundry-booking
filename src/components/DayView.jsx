@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../utils/supabase';
 import { useBooking } from './BookingContext';
 import UserLogin from './LogIn';
-import './Dayview.css';
+import './DayView.css';
 
 function DayView () {
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
