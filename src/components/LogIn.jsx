@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useBooking } from './BookingContext';
 import { supabase } from '../utils/supabase'
 import './LogIn.css'
@@ -12,7 +12,7 @@ const UserLogin = ({ onClose }) => {
   const [userData, setUserData] = useState(null); // Store the fetched user data
   const [loading, setLoading] = useState(false);
 
-  // useEffect to run the query when userLgh and password change
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,14 +51,14 @@ const UserLogin = ({ onClose }) => {
         <form onSubmit={handleSubmit}>
           <input 
             type="text" 
-            placeholder="User Appartment" 
+            placeholder="Appartment number" 
             value={userLgh} 
             onChange={(e) => setUserLgh(e.target.value)}
             required
           />
           <input 
             type="password"
-            placeholder="Pin Code (4 digits)" 
+            placeholder="PIN Code (4 digits)" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
             required

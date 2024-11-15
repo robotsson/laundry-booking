@@ -24,17 +24,38 @@
     margin-top: 0;
   }
   
+  .modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    padding: 20px;
+  }
+
+  .modal form input {
+    width: 80%; /* Adjust the width as needed */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
   .modal-actions {
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    justify-content: center;    
+    margin-top: 20px;
+    width: 100%; /* Ensure buttons stretch horizontally */
   }
-  
+   
   .modal-actions button {
-    padding: 4px 16px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    flex-grow: 1; /* Ensure buttons are evenly sized */
+    white-space: nowrap;
+    text-align: center;
   }
   
   .modal-actions button[type="submit"] {

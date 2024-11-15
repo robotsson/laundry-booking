@@ -29,6 +29,14 @@ export const BookingProvider = ({ children }) => {
     }
   };
 
+  // Function to update booking information in the database
+  const cancelBookedTimeSlot = async () => {
+    if (!selectedDate || !selectedRoom || !selectedTimeBlock || !user) {
+      console.error("Missing required booking information");
+      return;
+    }
+  }
+
   return (
     <BookingContext.Provider
       value={{
