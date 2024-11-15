@@ -12,7 +12,7 @@ import bookings from './dummybookings.jsx';
 function App() {
   const [data, setData] = useState(bookings);
 
-  console.log("App.jsx");
+  console.log("App.jsx");w
   console.log(bookings.length); // sanity check that dummy bookings was loaded
 
   return (
@@ -20,7 +20,7 @@ function App() {
       <Router>
         <Routes>
           {/* Uncoment the rout corresponding to your part of the project. */}        
-          {/* <Route path="/" element={<CalendarView bookings={data} />} />  */}
+          <Route path="/calendar" element={<CalendarView bookings={data} />} />  */}
           <Route path="/" element={<DayView />}  /> 
           {/* <Route path="/login" element={<LogIn />} />  */}
         </Routes>
