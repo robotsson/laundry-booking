@@ -12,7 +12,9 @@ export default function CalendarDay( {data,index} ) {
 
     let className="calendar-day";
     
-    const url = `/day/${data['date']}`;   // DayView gets this in useParams().id
+    // const url = `/day/${data['date']}`;  
+    // useContext instead
+    const url = `/day/`;
 
     if( dayjs().isAfter(data['date'], 'day') )
     {

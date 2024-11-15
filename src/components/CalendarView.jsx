@@ -19,11 +19,6 @@ export default function CalendarView({bookings}) {
   {
       console.log("CalenderView bookings was null");
   }
-
-  // for( let day of bookings )
-  // {
-  //     console.log(day['date']);
-  // }
   
   //console.log("CalendarView " + bookings.length);
   //console.log(JSON.stringify(bookings));
@@ -37,15 +32,4 @@ export default function CalendarView({bookings}) {
     </div>
   );
 
-  // return (
-  //   <div className="calendar">
-  //     <h1>{_getDate()}</h1>
-  //     <div className="weeks">
-  //       <CalendarWeek dates={dates[0]}/>
-  //       <CalendarWeek dates={dates[1]}/>
-  //       <CalendarWeek dates={dates[2]}/>
-  //       <CalendarWeek dates={dates[3]}/> 
-  //     </div>
-  //   </div>
-  // );
 }
