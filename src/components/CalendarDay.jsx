@@ -21,7 +21,7 @@ export default function CalendarDay( {data,index} ) {
 
     return (
         <div className="calendar-day-container">
-          <Link className="calendar" to={url}>
+          <Link to={url}>
             <div className={className} onClick={dayClickHandler}>{data['date']}</div>
           </Link>
         </div>
