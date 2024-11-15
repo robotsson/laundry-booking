@@ -14,20 +14,24 @@ export default function CalendarDay( {date} ) {
         setSelectedDate(date);         
     }
     
-    let className="calendar-day";
+    let dayClassName="calendar-day";
+    let containerClassName="calendar-day-container";
 
     if( dayjs().isAfter( date, 'day') )
     {
-      className +=" calendar-day-disabled";
+        dayClassName = "calendar-day-disabled";  
+        containerClassName = "calendar-day-container-disabled";
     }
 
     return (
-        <div className="calendar-day-container">
+        <div className={containerClassName}>
           <Link className="calendar-link" to="/day/">
-            <div className={className} onClick={dayClickHandler}>{date}</div>
+            <div className={dayClassName} onClick={dayClickHandler}>
+              {date}
+            </div>
           </Link>
         </div>
     );
-
-}
+      
+};
 
