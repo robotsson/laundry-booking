@@ -1,10 +1,9 @@
 import './CalendarView.css';
-import CalendarMonth from './CalendarMonth';
+import CalendarDay from './CalendarDay';
 import dayjs from 'dayjs';
 
 const _getDate = () => { 
-  let _now = dayjs();
-  return _now.format('dddd DD MMMM YYYY H:mm:ss');
+  return dayjs().format('dddd DD MMMM YYYY H:mm:ss');
 }
 
 export default function CalendarView({bookings}) {  
@@ -15,12 +14,17 @@ export default function CalendarView({bookings}) {
   //     console.log("CalenderView bookings was null");
   // }  
   // console.log(JSON.stringify(bookings));
+  const days = bookings.map(
+    (item, index) => <CalendarDay key={index} index={index} data={item}/>  
+  );
 
   return (
     <div className="calendar">
       <h1>{_getDate()}</h1>
       <div>
-        <CalendarMonth bookings={bookings} />
+        <div className="calendar-month">
+            {days}
+        </div>
       </div>
     </div>
   );

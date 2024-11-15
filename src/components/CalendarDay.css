@@ -12,14 +12,10 @@
     border: 1px solid #ccc;
 }
 
-/* .calendar-day-disabled {
-    pointer-events: none;    
-    background-color:rgb(230, 230, 230);
-} */
 
 .calendar-day-disabled {
     background-color: lightgrey;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 

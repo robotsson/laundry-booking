@@ -2,18 +2,12 @@ import './CalendarDay.css';
 import { Link } from "react-router-dom";
 import { useBooking } from './BookingContext';
 // import { supabase } from '../utils/supabase';
-import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
 export default function CalendarDay( {data} ) {
  
-    const { selectedDate, setSelectedDate } = useBooking();
-    
+    const { selectedDate, setSelectedDate } = useBooking();    
     const currentDate = data['date'];
-
-    // useEffect(() => {
-    //   console.log(`useEffect ${selectedDate}`);
-    // }, [selectedDate] );
 
     function dayClickHandler()
     {
@@ -37,12 +31,5 @@ export default function CalendarDay( {data} ) {
         </div>
     );
 
-    return (
-      <div className="calendar-day-container">
-       
-          <div className={className} onClick={dayClickHandler}>{currentDate}</div>
-
-      </div>
-  );    
 }
 
