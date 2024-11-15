@@ -3,8 +3,9 @@ import { supabase } from '../utils/supabase';
 import { useBooking } from './BookingContext';
 import UserLogin from './LogIn';
 import './DayView.css';
+import dayjs from 'dayjs';
 
-function DayView ({test}) {
+function DayView() {
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
   const predefinedTimeSlots = ["08-12", "12-16", "16-19", "19-22"];
   const [availableSlots, setSlots] = useState([]);
@@ -12,7 +13,9 @@ function DayView ({test}) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log( `DayView selectedDate: ${selectedDate}` );
+  // if you want to run DayView without involving calendar,
+  // uncomment this row:
+  if(!selectedDate) selectedDate = '2024-11-10';
 
   const handleTimeBlockClick = (e, room, timeBlock) => {     
     const buttonClass = e.target.className; // Get the className of the button
@@ -71,7 +74,7 @@ function DayView ({test}) {
           Rooms!inner(room_name),
           Dates!inner(date)
           `)
-        .eq('Dates.date', selectedDate) //Filter by day
+        .eq('Dates.date', '2024-11-10') //Filter by day
         .in('Rooms.room_name', ['room1', 'room2']); //All rooms        
       
       if(error) {
@@ -117,10 +120,11 @@ function DayView ({test}) {
   if (loading) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>; 
 
+  const displayDate = dayjs(selectedDate).format('dddd DD MMMM YYYY');
  
   return (
     <div>
-      <h1>{selectedDate}</h1>
+      <h1>{displayDate}</h1>
       <div className="day"> 
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
