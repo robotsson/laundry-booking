@@ -6,16 +6,15 @@ import './DayView.css';
 import dayjs from 'dayjs';
 
 function DayView() {
-  const { selectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
+  const { selectedDate, setSelectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
   const predefinedTimeSlots = ["08-12", "12-16", "16-19", "19-22"];
   const [availableSlots, setSlots] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // if you want to run DayView without involving calendar,
-  // uncomment this row:
-  if(!selectedDate) selectedDate = '2024-11-10';
+  // Just in case you want to run DayView without CalendarView
+  if(!selectedDate) setSelectedDate('2024-11-10');
 
   const handleTimeBlockClick = (e, room, timeBlock) => {     
     const buttonClass = e.target.className; // Get the className of the button
