@@ -34,7 +34,7 @@
     transform: scale(150%);
 }    
 
-a:link { color: black; text-decoration: none;}
-a:visited { color: black; }
-a:hover { color: black; }
-a:active { color: black; }
+a.calendar-link:link { color: black; text-decoration: none;}
+a.calendar-link:visited { color: black; }
+a.calendar-link:hover { color: black; }
+a.calendar-link:active { color: black; }

@@ -4,14 +4,16 @@ import { useBooking } from './BookingContext';
 import UserLogin from './LogIn';
 import './DayView.css';
 
-function DayView () {
+function DayView ({test}) {
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
   const predefinedTimeSlots = ["08-12", "12-16", "16-19", "19-22"];
   const [availableSlots, setSlots] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-      
+
+  console.log( `DayView selectedDate: ${selectedDate}` );
+
   const handleTimeBlockClick = (e, room, timeBlock) => {     
     const buttonClass = e.target.className; // Get the className of the button
 
@@ -118,6 +120,7 @@ function DayView () {
  
   return (
     <div>
+      <h1>{selectedDate}</h1>
       <div className="day"> 
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
@@ -152,6 +155,7 @@ function DayView () {
         ))}
       </div>
       {showLogin && <UserLogin onClose={closeModal} />}
+      <a href="/calendar/"><button>Back to Calendar</button></a>      
     </div>
   );
 };

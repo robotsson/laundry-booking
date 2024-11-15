@@ -4,16 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import DayView from './components/DayView';
 import LogIn from './components/LogIn';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // 28 days (4 weeks) in json format
 import bookings from './dummybookings.jsx';
 
 function App() {
-  const [data, setData] = useState(bookings);
+  const [data ] = useState(bookings);
 
-  console.log("App.jsx");
-  console.log(bookings.length); // sanity check that dummy bookings was loaded
+  // console.log(`App bookings.length: ${bookings.length}`); // sanity check that dummy bookings was loaded
 
   return (
     <BookingProvider>
