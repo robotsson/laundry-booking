@@ -12,7 +12,7 @@ import bookings from './dummybookings.jsx';
 function App() {
   const [data, setData] = useState(bookings);
 
-  console.log("App.jsx");w
+  console.log("App.jsx");
   console.log(bookings.length); // sanity check that dummy bookings was loaded
 
   return (
