@@ -18,11 +18,13 @@ function App() {
   return (
     <BookingProvider>
       <Router>
-        <Routes>
-          {/* Uncoment the rout corresponding to your part of the project. */}        
-          <Route path="/calendar" element={<CalendarView bookings={data} />} />  */}
-          <Route path="/" element={<DayView />}  /> 
-          {/* <Route path="/login" element={<LogIn />} />  */}
+        <Routes> 
+          {/* change this to have a different start page */}
+          <Route path="/" element={<DayView />} />
+
+          <Route path="/calendar" element={<CalendarView bookings={data} />} /> 
+          <Route path="/day" element={<DayView />}  /> 
+          <Route path="/login" element={<LogIn />} />  
         </Routes>
       </Router>      
     </BookingProvider>       
