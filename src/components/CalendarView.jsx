@@ -43,7 +43,7 @@ export default function CalendarView() {
     };
 
     fetchAvailableSlots();
-  }, []); // Re-run whenever timeBlock or date changes
+  }, []); 
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;   
