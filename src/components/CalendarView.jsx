@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/sv';
 import weekday from 'dayjs/plugin/weekday';
 
-export default function CalendarView({bookings}) {  
+export default function CalendarView() {  
 
   const getDate = () => dayjs().format('dddd DD MMMM YYYY H:mm:ss');
 
