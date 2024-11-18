@@ -96,11 +96,7 @@ export const BookingProvider = ({ children }) => {
   return (
     <BookingContext.Provider
       value={{
-<<<<<<< HEAD
         selectedDate,
-=======
-        selectedDate: '2024-11-11',        
->>>>>>> db-authentication
         setSelectedDate,
         selectedRoom,
         setSelectedRoom,
