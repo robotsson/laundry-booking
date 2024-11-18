@@ -33,8 +33,8 @@ const UserLogin = ({ onClose }) => {
       } else {
         setUserData(data); // Store the retrieved user data
         setError(null);        
-        setSelectedOwner(prev => userLgh); // Updated Selected Owner value inmediatly
-        bookTimeSlot();
+        setSelectedOwner(userLgh); // Updated Selected Owner value inmediatly
+        bookTimeSlot(userLgh);
         onClose();
       }
     } catch (err) {

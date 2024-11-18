@@ -4,8 +4,12 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    min-height: 100vh; /* Ensure the body covers the full viewport height */
     text-align: center;
 }
 
@@ -36,9 +40,7 @@ h3 {
 }
 
 /* Button Styles */
-button {
-    background-color: #4CAF50; /* Green */
-    color: white;
+button {       
     border: none;
     padding: 10px 15px;
     text-align: center;
@@ -51,8 +53,7 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #2d6830; /* Darker green */
+button:hover {  
 }
 
 .booked {
@@ -99,3 +100,21 @@ button:hover {
     padding: 10px;
     z-index: 1000;
   }
+
+.booked {
+background-color: red;
+color: white;
+}
+
+.booked:hover {
+    background-color: #ff6666;
+}
+
+.available {
+background-color: green;
+color: white;
+}
+
+.available:hover {
+    background-color: #66cc66;
+}

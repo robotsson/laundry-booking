@@ -11,7 +11,7 @@ export default function CalendarDay( {date} ) {
     function dayClickHandler()
     {
         // console.log("clickHandler: "+currentDate+" "+selectedDate);
-        setSelectedDate(date);         
+        setSelectedDate(date);        
     }
     
     let dayClassName="calendar-day";

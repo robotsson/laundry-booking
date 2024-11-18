@@ -48,7 +48,7 @@ export default function CalendarView() {
   if (loading) return <p>Loading ...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;   
 
-  const getDate = () => dayjs().format('dddd DD MMMM YYYY H:mm:ss');
+  const getDate = () => dayjs().format('dddd DD MMMM YYYY H:mm');
 
   dayjs.extend(weekday);
   // console.log( dayjs().format('YYYY-MM-DD') );

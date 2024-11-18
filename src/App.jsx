@@ -3,7 +3,6 @@ import { BookingProvider } from './components/BookingContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import DayView from './components/DayView';
-import LogIn from './components/LogIn';
 
 function App() {
 
@@ -13,8 +12,7 @@ function App() {
         <Routes> 
           {/* change this to have a different start page */}
           <Route path="/" element={<CalendarView />} /> 
-          <Route path="/day" element={<DayView />}  /> 
-          <Route path="/login" element={<LogIn />} />  
+          <Route path="/day" element={<DayView />}  />           
         </Routes>
       </Router>      
     </BookingProvider>       
