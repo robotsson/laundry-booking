@@ -11,6 +11,7 @@ export const BookingProvider = ({ children }) => {
   const [selectedOwner, setSelectedOwner] = useState(null);
   const [availability, setAvailability] = useState({});  
   const [user, setUser] = useState(null);
+  const [flag, setFlag] = useState(null);
 
   // Function to update booking information in the database
   const bookTimeSlot = async (owner) => {
@@ -107,6 +108,8 @@ export const BookingProvider = ({ children }) => {
         user,
         setUser,
         bookTimeSlot,
+        flag,
+        setFlag
       }}
     >
       {children}

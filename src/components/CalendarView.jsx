@@ -50,7 +50,7 @@ export default function CalendarView() {
 
   // console.log(calendarData);
 
-  if (loading) return <p>Loading ...</p>;
+  if (loading) { /* return <p>Loading ...</p>; */ }
   if (error) return <p style={{ color: 'red' }}>{error}</p>;   
 
   const getDate = () => dayjs().format('dddd DD MMMM YYYY H:mm');
