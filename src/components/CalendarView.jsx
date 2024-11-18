@@ -24,8 +24,8 @@ export default function CalendarView() {
           Rooms!inner(room_name),
           Dates!inner(date)
           `)  
-        .gte('Dates.date', '2024-11-10') // Start date
-        .lte('Dates.date', '2024-11-17') // End date //Filter by day
+        .gte('Dates.date', '2024-11-08') // Start date
+        .lte('Dates.date', '2024-11-25') // End date //Filter by day
         .in('Rooms.room_name', ['room1', 'room2']); //All rooms        
       
       if(error) {

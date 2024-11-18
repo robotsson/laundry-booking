@@ -16,18 +16,28 @@ export default function CalendarDay( {date} ) {
     
     let dayClassName="calendar-day";
     let containerClassName="calendar-day-container";
+    let bookingButton = <button className="calendar-day-button">Book</button>;
 
     if( dayjs().isAfter( date, 'day') )
     {
         dayClassName = "calendar-day-disabled";  
         containerClassName = "calendar-day-container-disabled";
+        bookingButton = <button className="calendar-day-button-show">Show</button>;
     }
+    else if( (dayjs(date).date() % 5) === 0 ) // just set some dates as full for now
+    {
+        bookingButton = <button className="calendar-day-button-full">Full</button>;            
+    }
+
+
+
 
     return (
         <div className={containerClassName}>
           <Link className="calendar-link" to="/day/">
             <div className={dayClassName} onClick={dayClickHandler}>
               {date}
+              {bookingButton}     
             </div>
           </Link>
         </div>

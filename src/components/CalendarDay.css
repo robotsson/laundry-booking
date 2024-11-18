@@ -2,6 +2,8 @@
     background-color: white; 
     /* #f1f1f1; */
    /* width: 13vw; */
+    display: flex;
+    flex-direction: column;
     padding-top: 1vw;
     text-align: center;
     height: 13vw; 
@@ -39,13 +41,13 @@
 }
 
 .calendar-day:hover {
-    filter: contrast(150%); 
+    /* filter: contrast(150%); 
     /* transform: translateY(-6px);   */
     transform: scale(125%);
 }    
 
 .calendar-day-disabled:hover {
-    filter: contrast(75%); 
+    /* filter: contrast(75%); */ 
     /* transform: translateY(-6px);   */
 
     transform: scale(85%);
@@ -56,3 +58,61 @@ a.calendar-link:link { color: black; text-decoration: none;}
 a.calendar-link:visited { color: black; }
 a.calendar-link:hover { color: black; }
 a.calendar-link:active { color: black; }
+
+
+.calendar-day-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 1vw 1.5vw;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 1.3vw;
+    margin: 2vh; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  calendar-day-button:hover {
+    background-color: #2d6830; /* Darker green */
+  }
+
+  .calendar-day-button-show {
+    background-color: gray; /* Green */
+    color: white;
+    border: none;
+    padding: 1vw 1.5vw;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 1.3vw;
+    margin: 2vh; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  calendar-day-button-show:hover {
+    background-color: black;
+  }
+
+  .calendar-day-button-full {
+    background-color: red; /* Green */
+    color: white;
+    border: none;
+    padding: 1vw 1.5vw;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 1.3vw;
+    margin: 2vh; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .calendar-day-button-full:hover {
+    background-color: rgb(119, 21, 21);
+  }
