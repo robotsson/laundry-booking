@@ -4,16 +4,20 @@ import { useBooking } from './BookingContext';
 // import { supabase } from '../utils/supabase';
 import dayjs from 'dayjs';
 
-export default function CalendarDay( {date} ) {
+export default function CalendarDay( {date, data} ) {
  
-    const { setSelectedDate } = useBooking();    
+    const { setSelectedDate } = useBooking();   
+    
+    // if( data!== null && data!== undefined){
+    //   console.log(`CalendarDay ${date} ${data.length}`);
+    // }
 
     function dayClickHandler()
     {
         // console.log("clickHandler: "+currentDate+" "+selectedDate);
         setSelectedDate(date);        
     }
-    
+  
     let dayClassName="calendar-day";
     let containerClassName="calendar-day-container";
     let bookingButton = <button className="calendar-day-button">Book</button>;
@@ -24,13 +28,11 @@ export default function CalendarDay( {date} ) {
         containerClassName = "calendar-day-container-disabled";
         bookingButton = <button className="calendar-day-button-show">Show</button>;
     }
-    else if( (dayjs(date).date() % 5) === 0 ) // just set some dates as full for now
+    // else if( (dayjs(date).date() % 5) === 0 ) // just set some dates as full for now
+    else if( data?.length === 8 )
     {
         bookingButton = <button className="calendar-day-button-full">Full</button>;            
     }
-
-
-
 
     return (
         <div className={containerClassName}>

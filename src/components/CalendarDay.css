@@ -43,14 +43,14 @@
 .calendar-day:hover {
     /* filter: contrast(150%); 
     /* transform: translateY(-6px);   */
-    transform: scale(105%);
+    transform: scale(110%);
 }    
 
 .calendar-day-disabled:hover {
     /* filter: contrast(75%); */ 
     /* transform: translateY(-6px);   */
 
-    transform: scale(85%);
+    transform: scale(90%);
 }    
 
 
@@ -61,7 +61,7 @@ a.calendar-link:active { color: black; }
 
 
 .calendar-day-button {
-    background-color: #4CAF50; /* Green */
+    background-color: green;
     color: white;
     border: none;
     padding: 1vw 1.5vw;
@@ -75,12 +75,12 @@ a.calendar-link:active { color: black; }
     transition: background-color 0.3s;
   }
   
-  calendar-day-button:hover {
-    background-color: #2d6830; /* Darker green */
+  .calendar-day-button:hover {
+    background-color: lightgreen;
   }
 
   .calendar-day-button-show {
-    background-color: gray; /* Green */
+    background-color: gray; 
     color: white;
     border: none;
     padding: 1vw 1.5vw;
@@ -95,11 +95,11 @@ a.calendar-link:active { color: black; }
   }
   
   calendar-day-button-show:hover {
-    background-color: black;
+    background-color: lightgray;
   }
 
   .calendar-day-button-full {
-    background-color: red; /* Green */
+    background-color: red; 
     color: white;
     border: none;
     padding: 1vw 1.5vw;
@@ -114,5 +114,5 @@ a.calendar-link:active { color: black; }
   }
   
   .calendar-day-button-full:hover {
-    background-color: rgb(119, 21, 21);
+    background-color: #ff6666;
   }

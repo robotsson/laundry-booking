@@ -56,27 +56,6 @@ button {
 button:hover {  
 }
 
-.booked {
-    background-color: white; /* Green */
-    color: black;
-    border: solid;
-    border-color: lightgrey;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 7px 40px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.booked:hover {
-    background-color: lightgrey; /* Darker green */
-}
-
-
 
 /* Login Styles */
 .login {
@@ -117,4 +96,14 @@ color: white;
 
 .available:hover {
     background-color: #66cc66;
+}
+
+.back {
+    background-color: rgb(62, 136, 182);
+    color: white;
+}
+
+.back:hover {
+    background-color: rgb(130, 198, 240);
+    color: white;
 }

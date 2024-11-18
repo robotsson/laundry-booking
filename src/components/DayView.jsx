@@ -9,7 +9,7 @@ function DayView () {
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock, cancelBookedSlot} = useBooking();    
   const predefinedTimeSlots = useMemo(() => ["08-12", "12-16", "16-19", "19-22"], []);
   const [availableSlots, setSlots] = useState([]);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false); 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -127,7 +127,7 @@ function DayView () {
         ))}
       </div>
       {showLogin && <UserLogin onClose={closeModal} />}
-      <a href="/"><button>Back to Calendar</button></a>      
+      <a href="/"><button className="back">Back to Calendar</button></a>      
     </div>
   );
 };
