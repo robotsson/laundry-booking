@@ -13,10 +13,10 @@ export const BookingProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   // Function to update booking information in the database
-  const bookTimeSlot = async () => {
-    console.log(selectedDate, selectedRoom, selectedTimeBlock, selectedOwner);
+  const bookTimeSlot = async (owner) => {
+    console.log(selectedDate, selectedRoom, selectedTimeBlock, owner);
     
-    if (!selectedDate || !selectedRoom || !selectedTimeBlock || !selectedOwner) {
+    if (!selectedDate || !selectedRoom || !selectedTimeBlock || !owner) {
       console.error("Missing required booking information");
       return;
     }
@@ -45,24 +45,22 @@ export const BookingProvider = ({ children }) => {
       const roomId = roomData.id;
       
       // Insert into Room_Schedule with the obtained IDs
-      const { data: scheduleData, error: scheduleError } = await supabase
-      .from('Room_Schedule')
-      .insert([
-        {
-          date_id: dateId,
-          room_id: roomId,
-          time_block: selectedTimeBlock,
-          owner: selectedOwner, // Assuming 'owner' is the selected apartment
-        },
-      ])
-      .select();
+      const { data, error } = await supabase
+        .from('Room_Schedule')
+        .insert({
+            date_id: dateId,
+            room_id: roomId,
+            time_block: selectedTimeBlock,
+            owner,
+        });
 
-      if (scheduleError) throw scheduleError;
-
-      console.log("Booking successful:", scheduleData);
-
-    } catch (error) {
-      console.error("Booking failed", error);
+      if (error) {
+        console.error("Error booking slot: ", error);
+      } else {
+        console.log("Booking successful:", data);
+      }
+    } catch (err) {
+      console.error("Booking failed", err);
     }
   };
 
@@ -96,11 +94,7 @@ export const BookingProvider = ({ children }) => {
   return (
     <BookingContext.Provider
       value={{
-<<<<<<< HEAD
         selectedDate,
-=======
-        selectedDate: '2024-11-11',        
->>>>>>> db-authentication
         setSelectedDate,
         selectedRoom,
         setSelectedRoom,

@@ -41,7 +41,7 @@
 .calendar-day:hover {
     filter: contrast(150%); 
     /* transform: translateY(-6px);   */
-    transform: scale(125%);
+    transform: scale(105%);
 }    
 
 .calendar-day-disabled:hover {

@@ -52,7 +52,7 @@ function DayView () {
           Rooms!inner(room_name),
           Dates!inner(date)
           `)
-        .eq('Dates.date', '2024-11-10') //Filter by day
+        .eq('Dates.date', selectedDate) //Filter by day
         .in('Rooms.room_name', ['room1', 'room2']); //All rooms        
       
       if(error) {
