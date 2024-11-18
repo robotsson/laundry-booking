@@ -6,7 +6,8 @@ import './DayView.css';
 import dayjs from 'dayjs';
 
 function DayView () {
-  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, cancelBookedSlot} = useBooking();    
+  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, 
+          cancelBookedSlot, bookingChangedFlag } = useBooking();    
   const predefinedTimeSlots = useMemo(() => ["08-12", "12-16", "16-19", "19-22"], []);
   const [availableSlots, setSlots] = useState([]);
   const [showLogin, setShowLogin] = useState(false); 
@@ -35,6 +36,8 @@ function DayView () {
     const fetchBookedSlots = async () => {
       if (!selectedDate) return;    
       
+      // console.log("DayView useEffect");
+
       try {
         setLoading(true);
 
@@ -83,7 +86,7 @@ function DayView () {
     };
 
     fetchBookedSlots();
-  }, [selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes    
+  }, [ bookingChangedFlag, selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes    
    
   if (loading) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>; 
@@ -127,7 +130,7 @@ function DayView () {
         ))}
       </div>
       {showLogin && <UserLogin onClose={closeModal} />}
-      <a href="/"><button className="back">Back to Calendar</button></a>      
+      <a href="/"><button className="back">Back to Calendar</button></a>
     </div>
   );
 };
