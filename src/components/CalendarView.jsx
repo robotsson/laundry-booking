@@ -16,6 +16,7 @@ export default function CalendarView() {
     const fetchAvailableSlots = async () => {
       
       try {
+        setLoading(true);
         // Fetch room schedule data with relationships to Dates and Rooms tables
         const { data, error } = await supabase        
         .from('Room_Schedule')
