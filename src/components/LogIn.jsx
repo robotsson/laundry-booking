@@ -5,7 +5,7 @@ import './LogIn.css'
 
 
 const UserLogin = ({ onClose }) => {
-  const { bookTimeSlot } = useBooking(); // Update db with data stored in BookingContext  
+  const { setSelectedOwner, bookTimeSlot } = useBooking(); // Update db with data stored in BookingContext  
   const [userLgh, setUserLgh] = useState('');  // User login (user_lgh)
   const [password, setPassword] = useState(''); // User password
   const [error, setError] = useState(null);    // Error state
@@ -13,7 +13,7 @@ const UserLogin = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
 
   
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {    
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -32,9 +32,9 @@ const UserLogin = ({ onClose }) => {
         setUserData(null);
       } else {
         setUserData(data); // Store the retrieved user data
-        setError(null);
-
-        bookTimeSlot(data);
+        setError(null);        
+        setSelectedOwner(prev => userLgh); // Updated Selected Owner value inmediatly
+        bookTimeSlot();
         onClose();
       }
     } catch (err) {

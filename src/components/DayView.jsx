@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../utils/supabase';
 import { useBooking } from './BookingContext';
 import UserLogin from './LogIn';
 import './Dayview.css';
 
 function DayView () {
-  const { selectedDate, setSelectedRoom, setSelectedTimeBlock } = useBooking();  
-  const predefinedTimeSlots = ["08-12", "12-16", "16-19", "19-22"];
+  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, cancelBookedSlot} = useBooking();    
+  const predefinedTimeSlots = useMemo(() => ["08-12", "12-16", "16-19", "19-22"], []);
   const [availableSlots, setSlots] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [error, setError] = useState(null);
@@ -16,12 +16,12 @@ function DayView () {
     const buttonClass = e.target.className; // Get the className of the button
 
     if(buttonClass.includes('available')) {      
-      setSelectedRoom(room);
+      setSelectedRoom(room);      
       setSelectedTimeBlock(timeBlock);
       setShowLogin(true);
 
     } else if (buttonClass.includes('booked')) {      
-      handleCancelBookedSlot(room, timeBlock);
+      cancelBookedSlot();
     }    
   };
 
@@ -29,37 +29,19 @@ function DayView () {
     setShowLogin(false);
   };
 
-  const handleCancelBookedSlot = async (room, timeBlock) => {
-    try {
-      // Perform cancellation logic here
-      console.log(`Canceling booking for ${room} at ${timeBlock}`);
-      // Example: update Supabase to remove the owner
-      const { error } = await supabase
-        .from('Room_Schedule')
-        .update({ owner: null })
-        .match({ 'Rooms.room_name': room, time_block: timeBlock });
   
-      if (error) throw error;
-  
-      // Refresh the state
-      setSlots((prev) => {
-        const updated = { ...prev };
-        const roomSlots = updated[room];
-        const slot = roomSlots.find((s) => s.time_block === timeBlock);
-        if (slot) slot.owner = null;
-        return updated;
-      });
-    } catch (err) {
-      console.error('Error canceling booking:', err.message);
-      setError('Failed to cancel booking.');
-    }
-  };
-
   useEffect(() => {    
-    const fetchAvailableSlots = async () => {
+    const fetchBookedSlots = async () => {
       if (!selectedDate) return;
       
       try {
+        setLoading(true);
+
+        let slotsByRoom = {
+          room1: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
+          room2: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
+        };
+
         // Fetch room schedule data with relationships to Dates and Rooms tables
         const { data, error } = await supabase        
         .from('Room_Schedule')
@@ -75,31 +57,21 @@ function DayView () {
       if(error) {
         console.error(error);
         throw error;
-      }
-      console.log(data);
+      }           
 
       // Reformat data to group by room
-      const slotsByRoom = data.reduce((acc, slot) => {
+      data.forEach((slot) => {
         const roomName = slot.Rooms.room_name;
-        if (!acc[roomName]) acc[roomName] = [];
-        acc[roomName].push({ 
-          time_block: slot.time_block, 
-          owner: slot.owner || null,
-         });
-        return acc;
-      }, {});
-      
-      // Fill missing time slots
-      for (const room in slotsByRoom) {
-        predefinedTimeSlots.forEach((time_block) => {
-          if (!slotsByRoom[room].some((slot) => slot.time_block === time_block)) {
-            slotsByRoom[room].push({
-              time_block,
-              owner: null, // Default to no owner
-            });
-          }
-        });
-      }
+        const timeBlockIndex = slotsByRoom[roomName]?.findIndex(
+          (item) => item.time_block === slot.time_block
+        );
+        if(timeBlockIndex !== -1) {
+          slotsByRoom[roomName][timeBlockIndex] = { 
+            time_block: slot.time_block, 
+            owner: slot.owner,
+          };  
+        }        
+      });       
 
       setSlots(slotsByRoom);
       } catch(err) {
@@ -109,16 +81,17 @@ function DayView () {
       }
     };
 
-    fetchAvailableSlots();
-  }, [selectedDate]); // Re-run whenever timeBlock or date changes
+    fetchBookedSlots();
+  }, [selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes
    
   if (loading) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>; 
 
  
   return (
-    <div>
-      <div className="day"> 
+    <div>      
+      <h1>{selectedDate}</h1> 
+      <div className="day">      
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
             <h3>{room}</h3>
