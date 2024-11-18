@@ -50,7 +50,7 @@
     /* filter: contrast(75%); */ 
     /* transform: translateY(-6px);   */
 
-    transform: scale(90%);
+    transform: scale(95%);
 }    
 
 
@@ -94,8 +94,8 @@ a.calendar-link:active { color: black; }
     transition: background-color 0.3s;
   }
   
-  calendar-day-button-show:hover {
-    background-color: lightgray;
+  .calendar-day-button-show:hover {
+    background-color: rgb(148, 148, 148);
   }
 
   .calendar-day-button-full {
