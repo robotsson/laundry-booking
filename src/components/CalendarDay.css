@@ -76,7 +76,7 @@ a.calendar-link:active { color: black; }
   }
   
   .calendar-day-button:hover {
-    background-color: lightgreen;
+    background-color: #66cc66;
   }
 
   .calendar-day-button-show {
