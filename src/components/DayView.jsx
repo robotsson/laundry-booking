@@ -94,7 +94,7 @@ function DayView () {
   const displayDate = dayjs(selectedDate).format('dddd DD MMMM YYYY');
  
   return (    
-    <div>
+    <div className='dayView'>
       <h1>{displayDate}</h1>
       <div className="day"> 
         {Object.keys(availableSlots).map((room) => (
