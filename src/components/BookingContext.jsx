@@ -11,6 +11,7 @@ export const BookingProvider = ({ children }) => {
   const [selectedOwner, setSelectedOwner] = useState(null);
   const [availability, setAvailability] = useState({});  
   const [user, setUser] = useState(null);
+  const [bookingChangedFlag, setBookingChangedFlag] = useState(false);
 
   // Function to update booking information in the database
   const bookTimeSlot = async (owner) => {
@@ -56,6 +57,7 @@ export const BookingProvider = ({ children }) => {
         console.error("Error booking slot: ", error);
       } else {
         console.log("Booking successful:", data);
+        setBookingChangedFlag(!bookingChangedFlag);
       }
     } catch (err) {
       console.error("Booking failed", err);
@@ -105,6 +107,8 @@ export const BookingProvider = ({ children }) => {
         user,
         setUser,
         bookTimeSlot,
+        bookingChangedFlag,
+        setBookingChangedFlag
       }}
     >
       {children}

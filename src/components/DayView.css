@@ -56,6 +56,7 @@ button {
 button:hover {  
 }
 
+
 /* Login Styles */
 .login {
     margin-top: 20px;
@@ -95,4 +96,14 @@ color: white;
 
 .available:hover {
     background-color: #66cc66;
+}
+
+.back {
+    background-color: rgb(62, 136, 182);
+    color: white;
+}
+
+.back:hover {
+    background-color: rgb(130, 198, 240);
+    color: white;
 }

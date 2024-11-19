@@ -6,10 +6,15 @@ import './DayView.css';
 import dayjs from 'dayjs';
 
 function DayView () {
+<<<<<<< HEAD
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock, cancelBookedSlot} = useBooking();
+=======
+  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, 
+          cancelBookedSlot, bookingChangedFlag } = useBooking();    
+>>>>>>> calendar
   const predefinedTimeSlots = useMemo(() => ["08-12", "12-16", "16-19", "19-22"], []);
   const [availableSlots, setSlots] = useState([]);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false); 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +29,7 @@ function DayView () {
         room2: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
       };
 
+<<<<<<< HEAD
       // Fetch room schedule data with relationships to Dates and Rooms tables
       const { data, error } = await supabase
       .from('Room_Schedule')
@@ -36,6 +42,44 @@ function DayView () {
       .eq('Dates.date', selectedDate) //Filter by day
       .in('Rooms.room_name', ['room1', 'room2']); //All rooms
     
+=======
+    } else if (buttonClass.includes('booked')) {      
+      cancelBookedSlot();
+    }    
+  };
+
+  const closeModal = () => {
+    setShowLogin(false);
+  };
+
+  
+  useEffect(() => {    
+    const fetchBookedSlots = async () => {
+      if (!selectedDate) return;    
+      
+      // console.log("DayView useEffect");
+
+      try {
+        setLoading(true);
+
+        let slotsByRoom = {
+          room1: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
+          room2: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
+        };
+
+        // Fetch room schedule data with relationships to Dates and Rooms tables
+        const { data, error } = await supabase        
+        .from('Room_Schedule')
+        .select(`
+          time_block,
+          owner,
+          Rooms!inner(room_name),
+          Dates!inner(date)
+          `)
+        .eq('Dates.date', selectedDate) //Filter by day
+        .in('Rooms.room_name', ['room1', 'room2']); //All rooms        
+      
+>>>>>>> calendar
       if(error) {
         console.error(error);
         throw error;
@@ -92,6 +136,7 @@ function DayView () {
   const handleLoginSuccess = () => {
     closeModal();
     fetchBookedSlots();
+<<<<<<< HEAD
   }
 
   useEffect(() => {
@@ -103,6 +148,12 @@ function DayView () {
   
   if (loading && availableSlots.length === 0) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
+=======
+  }, [ bookingChangedFlag, selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes    
+   
+  if (loading) return <p>Loading available slots...</p>;
+  if (error) return <p style={{ color: 'red' }}>{error}</p>; 
+>>>>>>> calendar
 
   const displayDate = dayjs(selectedDate).format('dddd DD MMMM YYYY');
  
@@ -137,8 +188,13 @@ function DayView () {
           </div>
         ))}
       </div>
+<<<<<<< HEAD
       {showLogin && <UserLogin onClose={() => setShowLogin(false)} onLoginSuccess={handleLoginSuccess} />}
       <a href="/"><button>Back to Calendar</button></a>
+=======
+      {showLogin && <UserLogin onClose={closeModal} />}
+      <a href="/"><button className="back">Back to Calendar</button></a>
+>>>>>>> calendar
     </div>
   );
 };

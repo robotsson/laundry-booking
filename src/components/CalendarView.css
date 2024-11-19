@@ -8,72 +8,103 @@ body {
   padding: 0;
 } 
 
-h1 {
+
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  font-size: 22px;
+  margin-bottom: 3vw;
 }
 
-h2 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-h5 {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-h6 {
-  margin-top: 0;
-  font-size: 12px;
-}
+h1 { font-size: 22px; }
+h2 { font-size: 20px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
 
 ol {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .calendar {
-/*  margin-left: 1vw;
-  margin-top: 1vw; */
-  margin-left: 2vw;
-  margin-right: 2vw;
-  width: auto;
+  margin: 2vw auto;
+  padding: 1vw;
+  width: 90vw;
+  max-width: 1200px;
   text-align: left;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(1, 1fr);
   gap: 1vw;
-  width: 96vw;
-  margin-top: 5vw;
-  margin-bottom: 2vw;
-  font-size: 2vw;
+  font-size: 1vw;
   text-align: center;
-  height: auto;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1vw;
 }
 
+/* Calendar Month */
 .calendar-month {
   display: grid;
-  /* background-color: lightblue; */
-
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(4, 1fr);    
   gap: 1vw;
-  width: 96vw;
-  margin-bottom: 1vw;
-  height: 54.86vw;    
+  font-size: 1.6vw;
+  text-align: center;
 }
 
+calendar-month div {
+  padding: 0.5vw;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.calendar-month div:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.calendar-month div.today {
+  background-color: #ffeb3b;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .calendar-weekdays {
+    font-size: 2.5vw;
+  }
+  
+  .calendar-month {
+    font-size: 2.2vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar {
+    width: 95vw;
+  }
+
+  .calendar-weekdays {
+    font-size: 3vw;
+  }
+  
+  .calendar-month {
+    font-size: 2.8vw;
+  }
+
+  .calendar-month div {
+    padding: 1vw;
+  }
+}
 
