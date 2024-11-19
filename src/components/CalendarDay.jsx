@@ -29,8 +29,9 @@ export default function CalendarDay( {date, data} ) {
         bookingButton = <button className="calendar-day-button-show">Show</button>;
     }
     // else if( (dayjs(date).date() % 5) === 0 ) // just set some dates as full for now
-    else if( data?.length === 8 )
+    else if( data?.length >= 8 )
     {
+        // check that all slots are booked, there can be duplicates currently
         bookingButton = <button className="calendar-day-button-full">Full</button>;            
     }
 
