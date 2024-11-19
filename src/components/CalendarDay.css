@@ -6,8 +6,8 @@
     flex-direction: column;
     padding-top: 1vw;
     text-align: center;
-    height: 13vw; 
-    font-size: 2vw;
+    height: 7vw; 
+    font-size: 1vw;
     transition-delay: 0.02s;
     transition-duration: 0.2s;
     border-radius: 5px;
@@ -26,8 +26,8 @@
 .calendar-day-disabled {
     padding-top: 1vw;
     text-align: center;
-    height: 13vw; 
-    font-size: 2vw;
+    height: 7vw; 
+    font-size: 1vw;
     transition-delay: 0.02s;
     transition-duration: 0.2s;
     border-radius: 5px;
@@ -64,11 +64,11 @@ a.calendar-link:active { color: black; }
     background-color: green;
     color: white;
     border: none;
-    padding: 1vw 1.5vw;
+    padding: 0.5vw 1.5vw;
     text-align: center;
     text-decoration: none;
 
-    font-size: 1.3vw;
+    font-size: 1.0vw;
     margin: 2vh; 
     cursor: pointer;
     border-radius: 5px;
@@ -83,11 +83,11 @@ a.calendar-link:active { color: black; }
     background-color: gray; 
     color: white;
     border: none;
-    padding: 1vw 1.5vw;
+    padding: 0.5vw 1.5vw;
     text-align: center;
     text-decoration: none;
 
-    font-size: 1.3vw;
+    font-size: 1.0vw;
     margin: 2vh; 
     cursor: pointer;
     border-radius: 5px;
@@ -102,11 +102,11 @@ a.calendar-link:active { color: black; }
     background-color: red; 
     color: white;
     border: none;
-    padding: 1vw 1.5vw;
+    padding: 0.5vw 1vw;
     text-align: center;
     text-decoration: none;
 
-    font-size: 1.3vw;
+    font-size: 1.0vw;
     margin: 2vh; 
     cursor: pointer;
     border-radius: 5px;
