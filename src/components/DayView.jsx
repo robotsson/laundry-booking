@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../utils/supabase';
 import { useBooking } from './BookingContext';
 import UserLogin from './LogIn';
@@ -6,43 +6,22 @@ import './DayView.css';
 import dayjs from 'dayjs';
 
 function DayView () {
-<<<<<<< HEAD
-  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, cancelBookedSlot} = useBooking();
-=======
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock, 
           cancelBookedSlot, bookingChangedFlag } = useBooking();    
->>>>>>> calendar
   const predefinedTimeSlots = useMemo(() => ["08-12", "12-16", "16-19", "19-22"], []);
   const [availableSlots, setSlots] = useState([]);
   const [showLogin, setShowLogin] = useState(false); 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchBookedSlots = useCallback(async () => {
-    if (!selectedDate) return;
-    
-    try {
-      setLoading(true);
+  const handleTimeBlockClick = (e, room, timeBlock) => {     
+    const buttonClass = e.target.className; // Get the className of the button
 
-      let slotsByRoom = {
-        room1: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
-        room2: predefinedTimeSlots.map((time_block) => ({ time_block, owner: null})),
-      };
+    if(buttonClass.includes('available')) {      
+      setSelectedRoom(room);      
+      setSelectedTimeBlock(timeBlock);
+      setShowLogin(true);
 
-<<<<<<< HEAD
-      // Fetch room schedule data with relationships to Dates and Rooms tables
-      const { data, error } = await supabase
-      .from('Room_Schedule')
-      .select(`
-        time_block,
-        owner,
-        Rooms!inner(room_name),
-        Dates!inner(date)
-        `)
-      .eq('Dates.date', selectedDate) //Filter by day
-      .in('Rooms.room_name', ['room1', 'room2']); //All rooms
-    
-=======
     } else if (buttonClass.includes('booked')) {      
       cancelBookedSlot();
     }    
@@ -79,11 +58,10 @@ function DayView () {
         .eq('Dates.date', selectedDate) //Filter by day
         .in('Rooms.room_name', ['room1', 'room2']); //All rooms        
       
->>>>>>> calendar
       if(error) {
         console.error(error);
         throw error;
-      }
+      }           
 
       // Reformat data to group by room
       data.forEach((slot) => {
@@ -92,75 +70,33 @@ function DayView () {
           (item) => item.time_block === slot.time_block
         );
         if(timeBlockIndex !== -1) {
-          slotsByRoom[roomName][timeBlockIndex] = {
-            time_block: slot.time_block,
+          slotsByRoom[roomName][timeBlockIndex] = { 
+            time_block: slot.time_block, 
             owner: slot.owner,
-          };
-        }
-      });
+          };  
+        }        
+      });       
 
-      setSlots((prevSlots) => {
-        const prevStringfied = JSON.stringify(prevSlots);
-        const newStringfied = JSON.stringify(slotsByRoom);
+      setSlots(slotsByRoom);
+      } catch(err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        if (prevStringfied === newStringfied) {
-          return prevSlots;
-        }
-
-        console.log("Updated slots: ", slotsByRoom);
-        return slotsByRoom;
-      });
-    } catch(err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes
-  
-  const handleTimeBlockClick = (e, room, timeBlock) => {
-    const buttonClass = e.target.className; // Get the className of the button
-
-    if(buttonClass.includes('available')) {
-      setSelectedRoom(room);
-      setSelectedTimeBlock(timeBlock);
-      setShowLogin(true);
-    } else if (buttonClass.includes('booked')) {
-      cancelBookedSlot();
-    }
-  };
-
-  const closeModal = () => {
-    setShowLogin(false);
-  };
-
-  const handleLoginSuccess = () => {
-    closeModal();
     fetchBookedSlots();
-<<<<<<< HEAD
-  }
-
-  useEffect(() => {
-    fetchBookedSlots();
-  }, [fetchBookedSlots]);
-
-  useEffect(() => {
-  }, [availableSlots]);
-  
-  if (loading && availableSlots.length === 0) return <p>Loading available slots...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
-=======
   }, [ bookingChangedFlag, selectedDate, predefinedTimeSlots]); // Re-run whenever timeBlock or date changes    
    
   if (loading) return <p>Loading available slots...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>; 
->>>>>>> calendar
 
   const displayDate = dayjs(selectedDate).format('dddd DD MMMM YYYY');
  
-  return (
+  return (    
     <div>
       <h1>{displayDate}</h1>
-      <div className="day">
+      <div className="day"> 
         {Object.keys(availableSlots).map((room) => (
           <div className="room" key={room}>
             <h3>Laundry Room { room === "room1" ? 1 : 2 }</h3>
@@ -170,15 +106,20 @@ function DayView () {
                 .sort((a, b) => {
                   // Split time blocks into start and end times
                   const [startA, endA] = a.time_block.split('-').map(Number);
-                  const [startB, endB] = b.time_block.split('-').map(Number);
-                  return startA !== startB ? startA - startB: endA - endB;
+                  const [startB, endB] = b.time_block.split('-').map(Number);                  
+                  // Compare start times first
+                  if (startA !== startB) {
+                    return startA - startB;
+                  }                  
+                  // If start times are equal, compare end times
+                  return endA - endB;
                 })
                 .map((slot, index) => (
                   <div key={index} className="time-slot">
                     <span>{slot.time_block}</span>
                     <button
                         onClick={(e) => handleTimeBlockClick(e, room, slot.time_block)}
-                        className={slot.owner ? 'booked' : 'available'}
+                        className={slot.owner ? 'booked' : 'available'}                        
                       >
                         {slot.owner ? slot.owner : 'Book'}
                     </button>
@@ -188,13 +129,8 @@ function DayView () {
           </div>
         ))}
       </div>
-<<<<<<< HEAD
-      {showLogin && <UserLogin onClose={() => setShowLogin(false)} onLoginSuccess={handleLoginSuccess} />}
-      <a href="/"><button>Back to Calendar</button></a>
-=======
       {showLogin && <UserLogin onClose={closeModal} />}
       <a href="/"><button className="back">Back to Calendar</button></a>
->>>>>>> calendar
     </div>
   );
 };
