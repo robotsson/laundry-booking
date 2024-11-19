@@ -14,8 +14,6 @@ export const BookingProvider = ({ children }) => {
 
   // Function to update booking information in the database
   const bookTimeSlot = async (owner) => {
-    console.log(selectedDate, selectedRoom, selectedTimeBlock, owner);
-    
     if (!selectedDate || !selectedRoom || !selectedTimeBlock || !owner) {
       console.error("Missing required booking information");
       return;

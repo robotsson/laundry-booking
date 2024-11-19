@@ -4,12 +4,11 @@ import { supabase } from '../utils/supabase'
 import './LogIn.css'
 
 
-const UserLogin = ({ onClose }) => {
+const UserLogin = ({ onClose, onLoginSuccess }) => {
   const { setSelectedOwner, bookTimeSlot } = useBooking(); // Update db with data stored in BookingContext  
   const [userLgh, setUserLgh] = useState('');  // User login (user_lgh)
   const [password, setPassword] = useState(''); // User password
-  const [error, setError] = useState(null);    // Error state
-  const [userData, setUserData] = useState(null); // Store the fetched user data
+  const [error, setError] = useState(null);    // Error state  
   const [loading, setLoading] = useState(false);
 
   
@@ -29,13 +28,11 @@ const UserLogin = ({ onClose }) => {
 
       if (error) {
         setError("Wrong apartment number or PIN code. Please try again");
-        setUserData(null);
-      } else {
-        setUserData(data); // Store the retrieved user data
+      } else {      
         setError(null);        
-        setSelectedOwner(userLgh); // Updated Selected Owner value inmediatly
+        setSelectedOwner(userLgh); 
         bookTimeSlot(userLgh);
-        onClose();
+        onLoginSuccess();
       }
     } catch (err) {
       setError('Error connecting to the server. Please try again later');        
@@ -72,8 +69,7 @@ const UserLogin = ({ onClose }) => {
               <button type='button' onClick={onClose}>Cancel</button>
             </div>
           )}
-        </form>
-          {userData && <p>Welcome {userData.user_lgh}!</p>}
+        </form>          
       </div>
     </div>
   );
