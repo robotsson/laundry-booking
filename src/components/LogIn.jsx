@@ -54,6 +54,7 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
             placeholder="Apartment number" 
             value={userLgh} 
             onChange={(e) => setUserLgh(e.target.value)}
+            autoComplete="username"
             required
           />
           <input 
@@ -61,6 +62,7 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
             placeholder="PIN Code (4 digits)" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
             required
           />
           {error && <p style={{ color: 'red' }}>{error}</p>}

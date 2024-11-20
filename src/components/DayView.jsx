@@ -16,11 +16,11 @@ function DayView () {
   const handleTimeBlockClick = (e, room, timeBlock) => {     
     const buttonClass = e.target.className; // Get the className of the button
 
-    if(buttonClass.includes('available')) {      
-      setSelectedRoom(room);      
-      setSelectedTimeBlock(timeBlock);
-      setShowLogin(true);
-    }    
+    // if(buttonClass.includes('available')) {      
+    setSelectedRoom(room);
+    setSelectedTimeBlock(timeBlock);
+    setShowLogin(true);
+    //}    
   };
 
   const closeModal = () => {
@@ -46,7 +46,7 @@ function DayView () {
         .eq('date', selectedDate?selectedDate:dayjs().format("YYYY-MM-DD")); 
 
         setData(data);
-        console.log(data);
+        // console.log(data);
       
         if(error) {
           console.error(error);
