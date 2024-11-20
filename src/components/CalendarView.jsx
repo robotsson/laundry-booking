@@ -60,7 +60,8 @@ export default function CalendarView() {
   {
     const date = startDate.add( index, 'day' ).format('YYYY-MM-DD');
     const dayData = calendarData?.filter(x => ( x.date === date));
-    // console.log( date +" "+ JSON.stringify(dayData) );
+//    console.log( date +" "+ dayData?.length );
+//    console.log( JSON.stringify(dayData) );
     days.push( <CalendarDay key={index} date={date} data={dayData}/> );
   }
 

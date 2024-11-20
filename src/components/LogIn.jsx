@@ -11,6 +11,7 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
   const [error, setError] = useState(null);    // Error state  
   const [loading, setLoading] = useState(false);
 
+  const touch = x => {};
   
   const handleSubmit = async (e) => {    
     e.preventDefault();
@@ -26,6 +27,7 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
         .eq('password', password)  // Ensure password matches
         .single();  // Expect only one result
 
+      touch(data);
       // console.log(JSON.stringify(data));
 
       if (error) {

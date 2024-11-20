@@ -6,7 +6,7 @@ import './DayView.css';
 import dayjs from 'dayjs';
 
 function DayView () {
-  const { selectedDate, setSelectedDate, setSelectedRoom, setSelectedTimeBlock, 
+  const { selectedDate, setSelectedRoom, setSelectedTimeBlock, 
           bookingChangedFlag } = useBooking();    
   const [data, setData] = useState([]);
   const [showLogin, setShowLogin] = useState(false); 
@@ -14,7 +14,7 @@ function DayView () {
   const [loading, setLoading] = useState(true);
 
   const handleTimeBlockClick = (e, room, timeBlock) => {     
-    const buttonClass = e.target.className; // Get the className of the button
+    //const buttonClass = e.target.className; // Get the className of the button
 
     // if(buttonClass.includes('available')) {      
     setSelectedRoom(room);

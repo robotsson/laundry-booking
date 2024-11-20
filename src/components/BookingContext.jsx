@@ -45,11 +45,11 @@ export const BookingProvider = ({ children }) => {
       if( data.length === 0 ) {
         await _bookTimeSlot( owner ); 
       }
-      else if( data.length > 0 && data[0].owner !== owner )
+      else if( data.length > 0 && data[0].user_id !== owner )
       {
         return; // notify user that time was unavailable
       } else {
-       //  await cancelTimeSlot(data[0].id);
+        await cancelTimeSlot(data[0].id);
       }
 
     } catch (err) {
@@ -80,6 +80,32 @@ export const BookingProvider = ({ children }) => {
       }
     } catch (err) {
       console.error("Booking failed", err);
+    }
+  }
+
+
+  const cancelTimeSlot = async (id) => {
+    console.log(`cancel ${id}`);
+    try {
+      const { data, error } = await supabase
+      .from('booking')
+      .delete()
+      .eq('id', id);
+      
+      const touch = x => {}; 
+      touch(data);
+
+      if (error) {
+        console.error("Error cancel slot: ", error);
+      } else {
+        console.log("cancel done");
+        setBookingChangedFlag(!bookingChangedFlag);
+      }
+    
+
+
+    } catch (err) {
+      console.error("Cancel failed", err);
     }
   }
 
