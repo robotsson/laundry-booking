@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import { supabase } from '../utils/supabase';
 
 const BookingContext = createContext();
@@ -22,36 +22,15 @@ export const BookingProvider = ({ children }) => {
     
     try {
       // Insert the date and get the inserted date ID
-      const { data: dateData, error: dateError } = await supabase
-      .from('Dates')
-      .insert([{ date: selectedDate }])
+      const { data, error } = await supabase
+      .from('booking')
+      .insert({date: selectedDate, room: selectedRoom, timeslot: selectedTimeBlock, user_id: owner})
       .select('id')
       .single();
     
-      if (dateError) throw dateError;
+      // if (dateError) throw dateError;
 
-      const dateId = dateData.id;
-
-      // Inser the room and get the inserted room ID
-      const { data: roomData, error: roomError } = await supabase
-      .from('Rooms')
-      .insert([{ room_name: selectedRoom }])
-      .select('id')
-      .single();
-
-      if (roomError) throw roomError;
-
-      const roomId = roomData.id;
-      
-      // Insert into Room_Schedule with the obtained IDs
-      const { data, error } = await supabase
-        .from('Room_Schedule')
-        .insert({
-            date_id: dateId,
-            room_id: roomId,
-            time_block: selectedTimeBlock,
-            owner,
-        });
+      // const dateId = dateData.id;
 
       if (error) {
         console.error("Error booking slot: ", error);
@@ -64,32 +43,7 @@ export const BookingProvider = ({ children }) => {
     }
   };
 
-  // Function to cancel booked information in the database
-  // const cancelTimeSlot = async () => {
-  //   try {
-  //     // Perform cancellation logic here
-  //     console.log(`Canceling booking for ${room} at ${timeBlock}`);
-  //     // Example: update Supabase to remove the owner
-  //     const { error } = await supabase
-  //       .from('Room_Schedule')
-  //       .update({ owner: null })
-  //       .match({ 'Rooms.room_name': room, time_block: timeBlock });
-  
-  //     if (error) throw error;
-  
-  //     // Refresh the state
-  //     setSlots((prev) => {
-  //       const updated = { ...prev };
-  //       const roomSlots = updated[room];
-  //       const slot = roomSlots.find((s) => s.time_block === timeBlock);
-  //       if (slot) slot.owner = null;
-  //       return updated;
-  //     });
-  //   } catch (err) {
-  //     console.error('Error canceling booking:', err.message);
-  //     setError('Failed to cancel booking.');
-  //   }
-  // };
+
 
   return (
     <BookingContext.Provider

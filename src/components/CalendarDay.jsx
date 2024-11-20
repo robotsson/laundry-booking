@@ -21,12 +21,17 @@ export default function CalendarDay( {date, data} ) {
     let dayClassName="calendar-day";
     let containerClassName="calendar-day-container";
     let bookingButton = <button className="calendar-day-button">Book</button>;
+    let today = dayjs();
 
-    if( dayjs().isAfter( date, 'day') )
+    if( today.isAfter( date, 'day') )
     {
         dayClassName = "calendar-day-disabled";  
         containerClassName = "calendar-day-container-disabled";
         bookingButton = <button className="calendar-day-button-show">Show</button>;
+    }
+    else if( today.isSame( date, 'day') )
+    {
+          dayClassName += " calendar-day-today";
     }
     // else if( (dayjs(date).date() % 5) === 0 ) // just set some dates as full for now
     else if( data?.length >= 8 )

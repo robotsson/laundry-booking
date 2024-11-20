@@ -20,11 +20,13 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
     try {
       // Fetch user data
       const { data, error } = await supabase
-        .from('Users')
-        .select('*')
-        .eq('user_lgh', userLgh)
+        .from('users')
+        .select('user_id','password')
+        .eq('user_id', userLgh)
         .eq('password', password)  // Ensure password matches
         .single();  // Expect only one result
+
+      // console.log(JSON.stringify(data));
 
       if (error) {
         setError("Wrong apartment number or PIN code. Please try again");
@@ -32,10 +34,11 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
         setError(null);        
         setSelectedOwner(userLgh); 
         bookTimeSlot(userLgh);
-        onLoginSuccess();
+        onClose();
+       // onLoginSuccess();
       }
     } catch (err) {
-      setError('Error connecting to the server. Please try again later');        
+      // setError('Error connecting to the server. Please try again later');   
     } finally {
       setLoading(false); // Hide loading state      
     };    
@@ -48,7 +51,7 @@ const UserLogin = ({ onClose, onLoginSuccess }) => {
         <form onSubmit={handleSubmit}>
           <input 
             type="text" 
-            placeholder="Appartment number" 
+            placeholder="Apartment number" 
             value={userLgh} 
             onChange={(e) => setUserLgh(e.target.value)}
             required
