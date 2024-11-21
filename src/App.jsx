@@ -11,8 +11,8 @@ function App() {
       <Router future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
         <Routes> 
           {/* change this to have a different start page */}
-          <Route path="/" element={<CalendarView />} /> 
-          <Route path="/day" element={<DayView />}  />           
+          <Route path="/laundry-booking" element={<CalendarView />} /> 
+          <Route path="/laundry-booking/day" element={<DayView />}  />           
         </Routes>
       </Router>      
     </BookingProvider>       

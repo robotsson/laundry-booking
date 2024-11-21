@@ -152,7 +152,7 @@ function DayView () {
       </div>
       {showLogin && <UserLogin onClose={closeModal} />}
       <p></p>
-      <a href="/"><button className="back">Back to Calendar</button></a>
+      <a href="/laundry-booking"><button className="back">Back to Calendar</button></a>
       <p></p>
     </div>
   );

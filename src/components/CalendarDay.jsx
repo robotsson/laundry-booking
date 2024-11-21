@@ -44,7 +44,7 @@ export default function CalendarDay( {date, data} ) {
 
     return (
         <div className={containerClassName}>
-          <Link className="calendar-link" to="/day/">
+          <Link className="calendar-link" to="/laundry-booking/day/">
             <div className={dayClassName} onClick={dayClickHandler}>
               {date}
               {bookingButton}     
