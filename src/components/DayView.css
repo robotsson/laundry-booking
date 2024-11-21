@@ -33,6 +33,10 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.dayView-disabled {
+    background-color:#ededed;
+}
+
 /* Day View Styles */
 .day {
     display: flex;
@@ -50,6 +54,11 @@ h3 {
     text-align: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.room-disabled 
+{
+    background-color: #d3d3d3;
 }
 
 .time-slot {
@@ -114,12 +123,17 @@ button:hover {
 }
 
 .available {
-background-color: green;
-color: white;
+    background-color: green;
+    color: white;
 }
 
 .available:hover {
     background-color: #66cc66;
+}
+
+.disabled {
+    background-color: gray; 
+    color: white;
 }
 
 .back {

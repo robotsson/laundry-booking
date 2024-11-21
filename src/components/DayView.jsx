@@ -5,6 +5,7 @@ import UserLogin from './LogIn';
 import './DayView.css';
 import dayjs from 'dayjs';
 
+
 function DayView () {
   const { selectedDate, setSelectedRoom, setSelectedTimeBlock, 
           bookingChangedFlag } = useBooking();    
@@ -22,6 +23,42 @@ function DayView () {
     setShowLogin(true);
     //}    
   };
+
+  function DayViewRoomButton( {room, userid, slot, disabled } )
+  {
+    if(!disabled)
+    {
+      return (
+        <button onClick={(e) => handleTimeBlockClick(e, room, slot)}
+          className={userid ? 'booked' : 'available' } >
+          {userid ? userid : 'Book'}
+        </button>
+      );
+    }
+    else 
+    {
+      return (
+        <button className={userid ? 'booked' : 'disabled' } >
+          {userid ? userid : 'Book'}
+        </button>)
+    }
+  }
+
+  function DayViewRoom( {slots, room, disabled} ) {
+
+
+    return (
+      <div>
+        {Object.keys(slots).map((slot, index) => (
+          <div key={index} className="time-slot">
+            <span>{slot}</span>
+            <DayViewRoomButton room={room} userid={slots[slot]} slot={slot} disabled={disabled} />
+          </div>
+        ))}
+      </div>
+    )
+  
+  }
 
   const closeModal = () => {
     setShowLogin(false);
@@ -81,38 +118,34 @@ function DayView () {
 
   // Object.keys(room_slots[0]).map((slot, index) => { console.log( slot + room_slots[0][slot]) });
 
+  let dayViewClassName = 'dayView';
+  let roomClassName = 'room';
+  let disabled = false;
+  let today = dayjs();
+  
+  if( today.isAfter( selectedDate, 'day') )
+  {
+    dayViewClassName += ' dayView-disabled';
+    roomClassName += ' room-disabled';
+    disabled = true;
+  }
+
   return (    
-    <div className='dayView'>
+    <div className={dayViewClassName}>
       <h1>{displayDate}</h1><p></p>
       <div className="day"> 
 
-        <div className="room" key="r1">
+        <div className={roomClassName} key="r1">
           <h3>Laundry Room 1</h3>
           <div> 
-            { Object.keys(room_slots[0]).map((slot, index) => (
-              <div key={index} className="time-slot">
-                <span>{slot}</span>
-                <button onClick={(e) => handleTimeBlockClick(e, 1, slot)}
-                  className={ room_slots[0][slot] ? 'booked' : 'available' } >
-                  { room_slots[0][slot] ? room_slots[0][slot] : 'Book' }
-                </button> 
-              </div>
-            ))}           
+            <DayViewRoom slots={room_slots[0]} room="1" disabled={disabled} /> 
           </div>
         </div>
 
-        <div className="room" key="r2">
+        <div className={roomClassName} key="r2">
           <h3>Laundry Room 2</h3>
           <div> 
-            { Object.keys(room_slots[1]).map((slot, index) => (
-              <div key={index} className="time-slot">
-                <span>{slot}</span>
-                <button onClick={(e) => handleTimeBlockClick(e, 2, slot)}
-                  className={ room_slots[1][slot] ? 'booked' : 'available' } >
-                  { room_slots[1][slot] ? room_slots[1][slot] : 'Book' }
-                </button> 
-              </div>
-            ))}           
+            <DayViewRoom slots={room_slots[1]} room="2" disabled={disabled} /> 
           </div>
         </div>
 
