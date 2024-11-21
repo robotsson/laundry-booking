@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/laundry-booking/static/css/main.0eef353e.css",
+    "main.js": "/laundry-booking/static/js/main.0823836c.js",
+    "static/js/952.5b476611.chunk.js": "/laundry-booking/static/js/952.5b476611.chunk.js",
+    "index.html": "/laundry-booking/index.html",
+    "main.0eef353e.css.map": "/laundry-booking/static/css/main.0eef353e.css.map",
+    "main.0823836c.js.map": "/laundry-booking/static/js/main.0823836c.js.map",
+    "952.5b476611.chunk.js.map": "/laundry-booking/static/js/952.5b476611.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0eef353e.css",
+    "static/js/main.0823836c.js"
+  ]
+}
