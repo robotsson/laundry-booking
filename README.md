@@ -2,7 +2,7 @@
 
 Laundry Room Booking system implemented in Javascript and React.
 
-Quick and dirty version of the database for demo
+Quick and dirty version of the database demo purposes.
 
 Uses supabase, react router and dayjs.
 
